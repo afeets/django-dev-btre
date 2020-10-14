@@ -59,12 +59,13 @@ def search(request):
         price = request.GET['price']
         if price:
             queryset_list = queryset_list.filter(price__lte=price) # less than or equal to
-            
+
     context = {
         'state_choices': state_choices,
         'price_choices': price_choices,
         'bedroom_choices': bedroom_choices,
         'listings': queryset_list,
+        'values': request.GET
     }
 
     return render(request, 'listings/search.html', context)
